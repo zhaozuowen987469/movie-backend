@@ -27,7 +27,7 @@ services:
     env_file:
       - './config.env'
     ports:
-      - '8081:8080'
+      - '8081:8081'
     depends_on:
       - postgres
     environment:
@@ -37,11 +37,11 @@ services:
   pgweb:
     image: sosedoff/pgweb
     ports: 
-      - "8082:8081"
+      - "8082:8082"
     links: 
       - postgres:postgres
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+      - DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
     depends_on:
       - postgres
 

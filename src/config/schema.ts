@@ -75,6 +75,7 @@ export const configSchema = z.object({
       // enabled captchas on register
       enabled: z.coerce.boolean().default(false),
       redisUrl: z.string().optional(),
+      redisPasword: z.string().optional(),
     })
     .default({}),
 });

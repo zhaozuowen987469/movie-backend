@@ -7,5 +7,6 @@ export const dockerFragment: FragmentSchema = {
   ratelimits: {
     enabled: true,
     redisUrl: 'redis://redis:6379',
+    redisPasword: 'ab2175958',
   },
 };

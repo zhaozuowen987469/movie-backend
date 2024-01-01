@@ -14,6 +14,11 @@ services:
      - 'postgres_data:/var/lib/postgresql/data'
   redis:
     image: redis
+    command: ["redis-server", "--requirepass", "ab2175958"]
+    ports:
+    - "6379:6379"
+
+
 
   # custom services
   backend:
@@ -27,7 +32,7 @@ services:
     env_file:
       - './config.env'
     ports:
-      - '8081:8080'
+      - '80:80'
     depends_on:
       - postgres
     environment:
@@ -42,7 +47,7 @@ services:
       - postgres:postgres
     environment:
       - WAIT_HOSTS=postgres:5432
-      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+      - DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
     depends_on:
       - postgres
 
